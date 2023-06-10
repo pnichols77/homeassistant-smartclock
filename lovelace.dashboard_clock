@@ -1,0 +1,869 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.dashboard_clock",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "theme": "Backend-selected",
+          "title": "Home",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "type": "custom:layout-card",
+              "layout_type": "custom:grid-layout",
+              "layout": {
+                "grid-template-columns": "1fr 1fr 1fr",
+                "width": "100%",
+                "margin": "0px",
+                "padding": "0px"
+              },
+              "cards": [
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "",
+                  "secondary": "",
+                  "icon": "mdi:dots-grid",
+                  "icon_color": "none",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/dashboard-clock/menu"
+                  },
+                  "card_mod": {
+                    "style": "ha-card{\n  margin-top:250px;\n  background: none;\n  color: rgba(255,255,255,0.2);\n  border: none;\n}\n"
+                  }
+                },
+                {
+                  "type": "custom:mod-card",
+                  "card": {
+                    "type": "custom:mushroom-title-card",
+                    "alignment": "center",
+                    "title": "{{ states('sensor.time') }}\n",
+                    "subtitle": "{{ states('sensor.friendly_date') }}\n",
+                    "tap_action": {
+                      "action": "navigate",
+                      "navigation_path": "/dashboard-clock/settings"
+                    }
+                  },
+                  "card_mod": {
+                    "style": {
+                      "mushroom-title-card$": "h1 {\n  --primary-text-color: rgb(var(--rgb-{{ states('input_select.clockcolor') | lower }}));  \n  --title-font-size: 140px;\n  --subtitle-font-weight: light;\n}\nh2 {\n  #--secondary-text-color: rgb(var(--rgb-green));  \n  --subtitle-font-size: 32px;\n  --subtitle-font-weight: lighter;\n}\n.header {\n  #--title-padding: 8px 24px 8px;\n}\n"
+                    }
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "",
+                  "secondary": "",
+                  "icon": "mdi:cog",
+                  "icon_color": "none",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/dashboard-clock/settings"
+                  },
+                  "card_mod": {
+                    "style": "ha-card{\n  margin-top:250px;\n  background: none;\n  color: rgba(255,255,255,0.2);\n  border: none;\n}\n"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Security",
+          "path": "security",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:mushroom-chips-card",
+                  "chips": [
+                    {
+                      "type": "action",
+                      "icon": "mdi:clock",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock"
+                      }
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:cctv",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/security"
+                      },
+                      "content": "Back Camera",
+                      "icon_color": "blue"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:cctv",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/security-front"
+                      },
+                      "content": "Front Camera"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:cctv",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/security-side"
+                      },
+                      "content": "Side Camera"
+                    }
+                  ],
+                  "alignment": "center"
+                },
+                {
+                  "show_state": false,
+                  "show_name": true,
+                  "camera_view": "live",
+                  "type": "picture-entity",
+                  "entity": "camera.back",
+                  "name": "Back Camera",
+                  "card_mod": {
+                    "style": "ha-card{\n  height:270px!important;\n}\n"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Security-front",
+          "path": "security-front",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:mushroom-chips-card",
+                  "chips": [
+                    {
+                      "type": "action",
+                      "icon": "mdi:clock",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock"
+                      }
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:cctv",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/security"
+                      },
+                      "content": "Back Camera"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:cctv",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/security-front"
+                      },
+                      "content": "Front Camera",
+                      "icon_color": "blue"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:cctv",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/security-side"
+                      },
+                      "content": "Side Camera"
+                    }
+                  ],
+                  "alignment": "center"
+                },
+                {
+                  "show_state": false,
+                  "show_name": true,
+                  "camera_view": "live",
+                  "type": "picture-entity",
+                  "entity": "camera.front",
+                  "name": "Front Camera",
+                  "card_mod": {
+                    "style": "ha-card{\n  height:270px!important;\n}\n"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "security-side",
+          "path": "security-side",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:mushroom-chips-card",
+                  "chips": [
+                    {
+                      "type": "action",
+                      "icon": "mdi:clock",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock"
+                      }
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:cctv",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/security"
+                      },
+                      "content": "Back Camera"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:cctv",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/security-front"
+                      },
+                      "content": "Front Camera"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:cctv",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/security-side"
+                      },
+                      "content": "Side Camera",
+                      "icon_color": "blue"
+                    }
+                  ],
+                  "alignment": "center"
+                },
+                {
+                  "show_state": false,
+                  "show_name": true,
+                  "camera_view": "live",
+                  "type": "picture-entity",
+                  "entity": "camera.side",
+                  "name": "Side Camera",
+                  "card_mod": {
+                    "style": "ha-card{\n  height:270px!important;\n}\n"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "weather",
+          "path": "weather",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:weather-card",
+                  "entity": "weather.openweathermap",
+                  "details": true,
+                  "hourly_forecast": true,
+                  "forecast": true,
+                  "number_of_forecasts": "6",
+                  "style": "ha-card {\n  background: none;\n  border: 0;\n}\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "music",
+          "path": "music",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "type": "custom:layout-card",
+              "layout_type": "custom:grid-layout",
+              "layout": {
+                "grid-template-columns": "1fr 16fr 4fr",
+                "width": "100%",
+                "margin": "0px",
+                "padding": "0px"
+              },
+              "cards": [
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "",
+                  "secondary": "",
+                  "icon": "mdi:clock",
+                  "icon_color": "none",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/dashboard-clock/home"
+                  },
+                  "card_mod": {
+                    "style": "ha-card{\n  margin-top:250px;\n  margin-bottom:0px;\n  background: none;\n  color: rgba(255,255,255,0.2);\n  border: none;\n}\n"
+                  }
+                },
+                {
+                  "type": "custom:mini-media-player",
+                  "style": "ha-card {\nheight: 310px!important;\nmargin-left:30px;\nborder: none;\nbackground: none;\n}\n :host {\n --mini-media-player-progress-height: 10px;\n --mini-media-player-accent-color: grey;\n --mini-media-player-overlay-color: rgba(20,20,20,0.9);\n --mini-media-player-overlay-color-stop: 10%;\n}\n",
+                  "group": false,
+                  "hide": {
+                    "volume": false,
+                    "power_state": false,
+                    "prev": false,
+                    "next": false,
+                    "pause": false,
+                    "play_pause": false,
+                    "play_stop": false,
+                    "power": true,
+                    "info": false,
+                    "state_label": false,
+                    "controls": false,
+                    "icon": true,
+                    "source": true
+                  },
+                  "entity": "media_player.bedroom_sonos",
+                  "artwork": "full-cover",
+                  "volume_stateless": false
+                }
+              ],
+              "card_mod": {
+                "style": "ha-card{\n  height: 270px!important;\n}\n"
+              }
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "settings",
+          "path": "settings",
+          "badges": [],
+          "cards": [
+            {
+              "type": "custom:mushroom-select-card",
+              "entity": "input_select.clockcolor",
+              "icon_type": "icon",
+              "layout": "horizontal",
+              "icon": "mdi:clock-digital"
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "menu",
+          "path": "menu",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "square": false,
+              "columns": 3,
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Clock",
+                  "secondary": "",
+                  "icon": "mdi:clock",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "home"
+                  },
+                  "fill_container": false,
+                  "card_mod": {
+                    "style": "ha-card{\n  height:150px!important;\n  }\n"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Lights",
+                  "secondary": "",
+                  "icon": "mdi:lightbulb",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "light"
+                  },
+                  "fill_container": true
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Heating",
+                  "secondary": "",
+                  "icon": "mdi:thermostat",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/dashboard-clock/heat"
+                  },
+                  "fill_container": true
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Weather",
+                  "secondary": "",
+                  "icon": "mdi:weather-rainy",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "weather"
+                  },
+                  "fill_container": true,
+                  "card_mod": {
+                    "style": "ha-card{\n  height:150px!important;\n  }\n"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Security",
+                  "secondary": "",
+                  "icon": "mdi:cctv",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "security"
+                  },
+                  "fill_container": true
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Music",
+                  "secondary": "",
+                  "icon": "mdi:speaker",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "music"
+                  },
+                  "fill_container": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Heat",
+          "path": "heat",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:mushroom-chips-card",
+                  "chips": [
+                    {
+                      "type": "action",
+                      "icon": "mdi:clock",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock"
+                      }
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:home-thermometer",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat"
+                      },
+                      "content": "House",
+                      "icon_color": "orange"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:silverware",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-kitchen"
+                      },
+                      "content": "Kitchen"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:bed-double",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-bedroom"
+                      },
+                      "content": "Bedroom"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:bunk-bed",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-pixies"
+                      },
+                      "content": "Kids Room"
+                    }
+                  ],
+                  "alignment": "center"
+                },
+                {
+                  "type": "custom:thermostat-dark-card",
+                  "step": "0.5",
+                  "chevron_size": "50",
+                  "pending": "3",
+                  "idle_zone": "2",
+                  "entity": "climate.living_room",
+                  "range_min": 15,
+                  "range_max": 25,
+                  "highlight_tap": false,
+                  "card_mod": {
+                    "style": "ha-card{\n  height:270px!important;\n  background: none;\n  border: none;\n}\n"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Heat Kitchen",
+          "path": "heat-kitchen",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:mushroom-chips-card",
+                  "chips": [
+                    {
+                      "type": "action",
+                      "icon": "mdi:clock",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock"
+                      }
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:home-thermometer",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat"
+                      },
+                      "content": "House"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:silverware",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-kitchen"
+                      },
+                      "content": "Kitchen",
+                      "icon_color": "orange"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:bed-double",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-bedroom"
+                      },
+                      "content": "Bedroom"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:bunk-bed",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-pixies"
+                      },
+                      "content": "Kids Room"
+                    }
+                  ],
+                  "alignment": "center"
+                },
+                {
+                  "type": "custom:thermostat-dark-card",
+                  "step": "0.5",
+                  "chevron_size": "50",
+                  "pending": "3",
+                  "idle_zone": "2",
+                  "entity": "climate.kitchen",
+                  "card_mod": {
+                    "style": "ha-card{\n  height:270px!important;\n  background: none;\n  border: none;\n}\n"
+                  },
+                  "range_min": 15,
+                  "range_max": 25
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Heat Bedroom",
+          "path": "heat-bedroom",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:mushroom-chips-card",
+                  "chips": [
+                    {
+                      "type": "action",
+                      "icon": "mdi:clock",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock"
+                      }
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:home-thermometer",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat"
+                      },
+                      "content": "House"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:silverware",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-kitchen"
+                      },
+                      "content": "Kitchen"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:bed-double",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-bedroom"
+                      },
+                      "content": "Bedroom",
+                      "icon_color": "orange"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:bunk-bed",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-pixies"
+                      },
+                      "content": "Kids Room"
+                    }
+                  ],
+                  "alignment": "center"
+                },
+                {
+                  "type": "custom:thermostat-dark-card",
+                  "step": "0.5",
+                  "chevron_size": "50",
+                  "pending": "3",
+                  "idle_zone": "2",
+                  "entity": "climate.bedroom",
+                  "card_mod": {
+                    "style": "ha-card{\n  height:270px!important;\n  background: none;\n  border: none;\n}\n"
+                  },
+                  "range_min": 15,
+                  "range_max": 25
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Heat Pixies Room",
+          "path": "heat-pixies",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:mushroom-chips-card",
+                  "chips": [
+                    {
+                      "type": "action",
+                      "icon": "mdi:clock",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock"
+                      }
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:home-thermometer",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat"
+                      },
+                      "content": "House"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:silverware",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-kitchen"
+                      },
+                      "content": "Kitchen"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:bed-double",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-bedroom"
+                      },
+                      "content": "Bedroom"
+                    },
+                    {
+                      "type": "template",
+                      "icon": "mdi:bunk-bed",
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/dashboard-clock/heat-pixies"
+                      },
+                      "content": "Kids Room",
+                      "icon_color": "orange"
+                    }
+                  ],
+                  "alignment": "center"
+                },
+                {
+                  "type": "custom:thermostat-dark-card",
+                  "step": "0.5",
+                  "chevron_size": "50",
+                  "pending": "3",
+                  "idle_zone": "2",
+                  "entity": "climate.living_room",
+                  "card_mod": {
+                    "style": "ha-card{\n  height:270px!important;\n  background: none;\n  border: none;\n}\n"
+                  },
+                  "range_min": 15,
+                  "range_max": 25
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "lights",
+          "path": "light",
+          "badges": [],
+          "cards": [
+            {
+              "type": "custom:mushroom-light-card",
+              "entity": "light.bedroom_ambient",
+              "show_brightness_control": true,
+              "use_light_color": true,
+              "show_color_temp_control": true,
+              "show_color_control": true,
+              "collapsible_controls": false,
+              "fill_container": false,
+              "layout": "horizontal"
+            },
+            {
+              "type": "custom:mushroom-light-card",
+              "entity": "light.bedroom_ceiling",
+              "show_brightness_control": true,
+              "use_light_color": true,
+              "show_color_temp_control": true,
+              "show_color_control": true,
+              "collapsible_controls": false,
+              "fill_container": false,
+              "layout": "horizontal"
+            },
+            {
+              "square": false,
+              "columns": 2,
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "custom:mushroom-template-card",
+                  "icon": "mdi:weather-night",
+                  "layout": "horizontal",
+                  "primary": "Night Time Mode",
+                  "secondary": "        {{ states.light \n          | rejectattr('attributes.entity_id', 'defined') \n          | selectattr('state', 'eq', 'on')\n          | list | count }} Lights On",
+                  "fill_container": false,
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.evening_lights_off",
+                    "data": {},
+                    "target": {}
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  },
+                  "icon_color": "blue"
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "icon": "mdi:bed",
+                  "tap_actio": {
+                    "action": "call-service",
+                    "service": "light.turn_off",
+                    "target": {
+                      "entity_id": [
+                        "light.big_globe",
+                        "light.bedroom_ceiling",
+                        "light.bed_light"
+                      ]
+                    },
+                    "data": {
+                      "transition": 2
+                    }
+                  },
+                  "layout": "horizontal",
+                  "primary": "Bed Time",
+                  "multiline_secondary": false,
+                  "secondary": " ",
+                  "icon_color": "blue",
+                  "hold_action": {
+                    "action": "none"
+                  },
+                  "tap_action": {
+                    "action": "none"
+                  },
+                  "fill_container": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
